@@ -31,7 +31,6 @@ const sizeNavBtn = "tiny";
             >
               命名法
             </n-button>
-
             <n-button
               :size="sizeNavBtn"
               type="info"
@@ -39,6 +38,14 @@ const sizeNavBtn = "tiny";
               ghost
             >
               翻译
+            </n-button>
+            <n-button
+              :size="sizeNavBtn"
+              type="info"
+              @click="router.push('/json_formatting')"
+              ghost
+            >
+              Json格式化
             </n-button>
           </div>
         </div>

@@ -3,6 +3,7 @@ import { createMemoryHistory, createRouter } from "vue-router";
 import HomeView from "@/views/home/HomeView.vue";
 import NamingConventionView from "@/views/naming_convention/NamingConventionView.vue";
 import TranslateView from "@/views/translate/TranslateView.vue";
+import JsonFormattingView from "@/views/json_formatting/JsonFormattingView.vue";
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
         path: "/translate",
         name: "translate",
         component: TranslateView,
+      },
+      {
+        path: "/json_formatting",
+        name: "json_formatting",
+        component: JsonFormattingView,
       },
     ],
   },
