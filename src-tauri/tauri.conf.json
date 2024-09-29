@@ -7,8 +7,7 @@
     "distDir": "../dist"
   },
   "package": {
-    "productName": "windows_developer_toolbox",
-    "version": "0.1.0"
+    "productName": "windows_developer_toolbox"
   },
   "tauri": {
     "allowlist": {
