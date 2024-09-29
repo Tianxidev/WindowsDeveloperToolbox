@@ -35,7 +35,7 @@
     "bundle": {
       "active": true,
       "targets": "all",
-      "identifier": "com.windows_developer_toolbox.app",
+      "identifier": "com.windows-developer-toolbox.app",
       "icon": [
         "icons/32x32.png",
         "icons/128x128.png",
