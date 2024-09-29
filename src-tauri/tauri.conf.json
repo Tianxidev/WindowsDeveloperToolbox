@@ -7,7 +7,7 @@
     "distDir": "../dist"
   },
   "package": {
-    "productName": "windows_developer_toolbox"
+    "productName": "WDT"
   },
   "tauri": {
     "allowlist": {
