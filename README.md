@@ -12,3 +12,18 @@
 
 - [ ] Windows 音频同步
 
+## 开发
+
+```
+npm run tauri dev
+```
+
+## 编译
+
+```
+npm run tauri build
+```
+
+## 赞助
+
+[赞助](./appreciate_code.jpg)
