@@ -26,4 +26,4 @@ npm run tauri build
 
 ## 赞助
 
-[赞助](./appreciate_code.jpg)
+![赞助](./appreciate_code.jpg)
