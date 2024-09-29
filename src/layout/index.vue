@@ -47,6 +47,14 @@ const sizeNavBtn = "tiny";
             >
               Json格式化
             </n-button>
+            <n-button
+              :size="sizeNavBtn"
+              type="info"
+              @click="router.push('/network')"
+              ghost
+            >
+              网络
+            </n-button>
           </div>
         </div>
       </footer>

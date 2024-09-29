@@ -4,6 +4,8 @@ import HomeView from "@/views/home/HomeView.vue";
 import NamingConventionView from "@/views/naming_convention/NamingConventionView.vue";
 import TranslateView from "@/views/translate/TranslateView.vue";
 import JsonFormattingView from "@/views/json_formatting/JsonFormattingView.vue";
+import NetworkView from "@/views/network/NetworkView.vue";
+import path from "path";
 
 const routes = [
   {
@@ -31,6 +33,11 @@ const routes = [
         name: "json_formatting",
         component: JsonFormattingView,
       },
+      {
+        path: "/network",
+        name: "network",
+        component: NetworkView,
+      }
     ],
   },
 ];
