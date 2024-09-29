@@ -22,7 +22,11 @@
       {
         "title": "Windows 开发人员工具箱",
         "width": 800,
-        "height": 600
+        "minWidth": 800,
+        "height": 500,
+        "minHeight": 500,
+        "center": true,
+        "label": "main"
       }
     ],
     "security": {
