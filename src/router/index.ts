@@ -36,6 +36,11 @@ const routes = [
                 name: "color_picker",
                 component: () => import("@/views/color_picker/ColorPickerView.vue"),
             },
+            {
+                path: "/settings",
+                name: "settings",
+                component: () => import("@/views/settings/SettingsView.vue"),
+            },
         ],
     },
 ];
