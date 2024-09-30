@@ -15,43 +15,41 @@ const convertList = ref<ConvertItem[]>([]);
 // 拆分函数
 function sSplit(input: string): string {
   return input
-      .split(/[\s_-]+/) // 使用正则表达式支持空格、下划线和破折号
+      .replace(/[\s_-]+/g, '|') // 替换多个空格、下划线和破折号为 |
+      .replace(/([a-z])([A-Z])/g, '$1|$2') // 在小写字母和大写字母之间添加 |
+      .trim() // 去除前后空格
+      .split('|') // 按 | 拆分
+      .filter(word => word) // 过滤掉空字符串
       .map((word, index) => {
-        if (index === 0) return word.toLowerCase();
+        return word.toLowerCase(); // 全部转换为小写
+      })
+      .join('|'); // 使用 | 连接
+}
+
+// 驼峰命名法
+function toCamelCase(input: string, upperCase: boolean = false): string {
+  const words = input.split('|'); // 按 | 拆分
+  return words
+      .map((word, index) => {
+        if (index === 0) {
+          return upperCase ? word.charAt(0).toUpperCase() + word.slice(1).toLowerCase() : word.toLowerCase();
+        }
         return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
       })
       .join('');
 }
 
-// 驼峰命名法
-function toCamelCase(input: string, upperCase: boolean = false): string {
-  const words = input.replace(/([a-z])([A-Z])/g, "$1 $2").split(/[\s_]+/);
-  const camelCase = words
-      .map((word, index) => {
-        if (index === 0) {
-          return upperCase
-              ? word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
-              : word.toLowerCase();
-        } else {
-          return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-        }
-      })
-      .join("");
-
-  return camelCase;
-}
-
 // 下划线命名法
 function toSnakeCase(input: string, upperCase: boolean = false): string {
-  const words = input.replace(/([a-z])([A-Z])/g, "$1_$2").split(/[\s_]+/);
-  const snakeCase = words.join("_");
+  const words = input.split('|'); // 按 | 拆分
+  const snakeCase = words.join('_');
   return upperCase ? snakeCase.toUpperCase() : snakeCase.toLowerCase();
 }
 
 // 项目命名法
 function toKebabCase(input: string, upperCase: boolean = false): string {
-  const words = input.replace(/([a-z])([A-Z])/g, "$1-$2").split(/[\s_]+/);
-  const kebabCase = words.join("-");
+  const words = input.split('|'); // 按 | 拆分
+  const kebabCase = words.join('-');
   return upperCase ? kebabCase.toUpperCase() : kebabCase.toLowerCase();
 }
 
@@ -108,13 +106,23 @@ function convertVariableName(variableName: string) {
   });
 
   result.push({
-    name: "单下划线内置变量",
+    name: "单下划线内置变量(大写)",
     value: "_" + toSnakeCase(variableName, true) + "_",
   });
 
   result.push({
-    name: "双下划线内置变量",
+    name: "单下划线内置变量(小写)",
+    value: "_" + toSnakeCase(variableName, false) + "_",
+  });
+
+  result.push({
+    name: "双下划线内置变量(大写)",
     value: "__" + toSnakeCase(variableName, true) + "__",
+  });
+
+  result.push({
+    name: "双下划线内置变量(小写)",
+    value: "__" + toSnakeCase(variableName, false) + "__",
   });
 
   result.push({
