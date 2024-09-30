@@ -16,9 +16,9 @@ const checkBrowserSupport = () => {
 };
 
 const defaultColorSet = () => {
-  partySmiley.value.style.background = '#ffffff';
-  partySmiley.value.style.color = '#000000';
-  partySmiley.value.style.filter = 'drop-shadow(0px 0px 5px #333333)';
+  partySmiley.value!.style.background = '#ffffff';
+  partySmiley.value!.style.color = '#000000';
+  partySmiley.value!.style.filter = 'drop-shadow(0px 0px 5px #333333)';
 };
 
 const pickColor = async () => {
@@ -28,7 +28,9 @@ const pickColor = async () => {
     const pickedColor = await eyeDropper.open();
     vColor.value = pickedColor.sRGBHex;
     warningVisible.value = false;
-    partySmiley.value.style.background = pickedColor.sRGBHex;
+
+    // 设置背景颜色
+    partySmiley.value!.style.background = pickedColor.sRGBHex;
 
     // 差值法计算文字颜色
     const color = pickedColor.sRGBHex;
@@ -36,11 +38,11 @@ const pickColor = async () => {
     const g = parseInt(color.slice(3, 5), 16);
     const b = parseInt(color.slice(5, 7), 16);
     const gray = r * 0.299 + g * 0.587 + b * 0.114;
-    partySmiley.value.style.color = gray > 186 ? '#000000' : '#ffffff';
+    partySmiley.value!.style.color = gray > 186 ? '#000000' : '#ffffff';
 
     // 设置 drop-shadow 阴影
     let dropShadow = '#333333';
-    partySmiley.value.style.filter = `drop-shadow(0px 0px 5px ${dropShadow})`;
+    partySmiley.value!.style.filter = `drop-shadow(0px 0px 5px ${dropShadow})`;
 
   } catch (error) {
     warningVisible.value = true;

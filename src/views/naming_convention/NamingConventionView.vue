@@ -20,7 +20,7 @@ function sSplit(input: string): string {
       .trim() // 去除前后空格
       .split('|') // 按 | 拆分
       .filter(word => word) // 过滤掉空字符串
-      .map((word, index) => {
+      .map((word) => {
         return word.toLowerCase(); // 全部转换为小写
       })
       .join('|'); // 使用 | 连接
