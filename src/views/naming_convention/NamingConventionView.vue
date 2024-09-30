@@ -12,6 +12,17 @@ interface ConvertItem {
 const valueInput = ref<string>("");
 const convertList = ref<ConvertItem[] | null>(null);
 
+// 拆分函数
+function sSplit(input: string): string {
+  return input
+      .split(/[\s_-]+/) // 使用正则表达式支持空格、下划线和破折号
+      .map((word, index) => {
+        if (index === 0) return word.toLowerCase();
+        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+      })
+      .join('');
+}
+
 // 驼峰命名法
 function toCamelCase(input: string, upperCase: boolean = false): string {
   const words = input.replace(/([a-z])([A-Z])/g, "$1 $2").split(/[\s_]+/);
@@ -52,7 +63,7 @@ function convertVariableName(variableName: string) {
     return result;
   }
 
-  variableName = variableName.replace(/\s/g, "");
+  variableName = sSplit(variableName);
 
   result.push({
     name: "小驼峰",
