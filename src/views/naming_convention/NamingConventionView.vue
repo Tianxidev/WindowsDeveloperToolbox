@@ -10,7 +10,7 @@ interface ConvertItem {
 }
 
 const valueInput = ref<string>("");
-const convertList = ref<ConvertItem[] | null>(null);
+const convertList = ref<ConvertItem[]>([]);
 
 // 拆分函数
 function sSplit(input: string): string {
@@ -27,16 +27,16 @@ function sSplit(input: string): string {
 function toCamelCase(input: string, upperCase: boolean = false): string {
   const words = input.replace(/([a-z])([A-Z])/g, "$1 $2").split(/[\s_]+/);
   const camelCase = words
-    .map((word, index) => {
-      if (index === 0) {
-        return upperCase
-          ? word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
-          : word.toLowerCase();
-      } else {
-        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-      }
-    })
-    .join("");
+      .map((word, index) => {
+        if (index === 0) {
+          return upperCase
+              ? word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+              : word.toLowerCase();
+        } else {
+          return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+        }
+      })
+      .join("");
 
   return camelCase;
 }
@@ -218,21 +218,21 @@ watch(valueInput, (newValue) => {
         我们希望所有的命名是有意义的。
       </n-alert>
       <n-input
-        v-model:value="valueInput"
-        type="text"
-        placeholder="请输入变量名"
-        clearable
+          v-model:value="valueInput"
+          type="text"
+          placeholder="请输入变量名"
+          clearable
       />
     </div>
     <div v-if="valueInput != ''" class="">
       <h1 class="text-2xl font-bold mb-2">生成结果</h1>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
         <div
-          v-for="(item, index) in convertList"
-          :key="index"
-          class="bg-white rounded-lg shadow-md p-4 border"
+            v-for="(item, index) in convertList"
+            :key="index"
+            class="bg-white rounded-lg shadow-md p-4 border"
         >
-          <h2 class="text-xl font-semibold mb-2 border-b border-gray-300">
+          <h2 class="text-xl font-semibold mb-2 border-b border-gray-300 overflow-ellipsis overflow-hidden whitespace-nowrap">
             {{ item.value }}
           </h2>
           <ul>
@@ -240,11 +240,11 @@ watch(valueInput, (newValue) => {
               <span class="font-medium">{{ item.name }}</span>
               <span>
                 <n-button
-                  strong
-                  secondary
-                  size="tiny"
-                  @click="copyValue(item.value)"
-                  type="info"
+                    strong
+                    secondary
+                    size="tiny"
+                    @click="copyValue(item.value)"
+                    type="info"
                 >
                   复制
                 </n-button>
