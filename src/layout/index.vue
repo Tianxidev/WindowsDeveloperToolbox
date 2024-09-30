@@ -55,6 +55,14 @@ const sizeNavBtn = "tiny";
             >
               网络
             </n-button>
+            <n-button
+                :size="sizeNavBtn"
+                type="info"
+                @click="router.push('/color_picker')"
+                ghost
+            >
+              ColorPicker
+            </n-button>
           </div>
         </div>
       </footer>
