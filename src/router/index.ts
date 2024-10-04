@@ -7,34 +7,24 @@ const routes = [
         component: () => import("@/layout/index.vue"),
         children: [
             {
+                path: "/feature_list",
+                name: "feature_list",
+                component: () => import("@/views/feature_list/FeatureListView.vue"),
+            },
+            {
+                path: "/tools/local/:toolName",
+                name: "tools-local",
+                component: () => import("@/views/tools/LocalToolsView.vue"),
+            },
+            {
+                path: "/tools/network/:toolName",
+                name: "tools-network",
+                component: () => import("@/views/tools/NetworkToolsView.vue"),
+            },
+            {
                 path: "/home",
-                nam: "home",
+                name: "home",
                 component: () => import("@/views/home/HomeView.vue"),
-            },
-            {
-                path: "/naming_convention",
-                name: "naming_convention",
-                component: () => import("@/views/naming_convention/NamingConventionView.vue"),
-            },
-            {
-                path: "/translate",
-                name: "translate",
-                component: () => import("@/views/translate/TranslateView.vue"),
-            },
-            {
-                path: "/json_formatting",
-                name: "json_formatting",
-                component: () => import("@/views/json_formatting/JsonFormattingView.vue"),
-            },
-            {
-                path: "/network",
-                name: "network",
-                component: () => import("@/views/network/NetworkView.vue"),
-            },
-            {
-                path: "/color_picker",
-                name: "color_picker",
-                component: () => import("@/views/color_picker/ColorPickerView.vue"),
             },
             {
                 path: "/settings",

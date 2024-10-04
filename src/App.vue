@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import NaiveProvider from "@/components/NaiveProvider.vue";
+import NaiveProvider from "@/components/naiveui/NaiveProvider.vue";
 </script>
 
 <template>

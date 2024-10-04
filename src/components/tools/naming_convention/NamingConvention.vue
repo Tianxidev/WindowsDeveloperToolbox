@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref, watch } from "vue";
 import { NInput, NAlert, NButton } from "naive-ui";
-import Clipboard from "@/utils/clipboard";
-import { useToastTool } from "@/hooks/useToastTool";
+import Clipboard from "@/utils/clipboard.ts";
+import { useToastTool } from "@/hooks/useToastTool.ts";
 
 interface ConvertItem {
   name: string;
