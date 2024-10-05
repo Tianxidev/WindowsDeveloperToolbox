@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { NInput } from "naive-ui";
 import { ref, watch } from "vue";
-import { invoke } from "@tauri-apps/api/tauri";
+import { invoke } from "@tauri-apps/api/core";
 
 const cmdInput = ref<string>("");
 

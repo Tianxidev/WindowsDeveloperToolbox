@@ -2,7 +2,7 @@
 
 
 import { onMounted } from "vue";
-import { invoke } from "@tauri-apps/api/tauri";
+import { invoke } from "@tauri-apps/api/core";
 import { NButton } from "naive-ui";
 
 const openSystemDeviceManager = () => {
