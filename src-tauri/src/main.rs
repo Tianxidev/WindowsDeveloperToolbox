@@ -6,7 +6,10 @@ use core::cmds;
 
 fn main() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![cmds::view_open_devtools,])
+        .invoke_handler(tauri::generate_handler![
+            cmds::view_open_devtools,
+            cmds::view_open_system_device_manager,
+        ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
